@@ -34,7 +34,6 @@ $EM_CONF[$_EXTKEY] = array (
     array (
     ),
   ),
-  '_md5_values_when_last_written' => 'a:22:{s:9:"ChangeLog";s:4:"bebd";s:10:"README.txt";s:4:"dfb5";s:16:"ext_autoload.php";s:4:"1911";s:21:"ext_conf_template.txt";s:4:"1f2a";s:12:"ext_icon.gif";s:4:"559f";s:17:"ext_localconf.php";s:4:"8c7f";s:13:"locallang.xml";s:4:"81be";s:26:"Documentation/Includes.txt";s:4:"c83c";s:23:"Documentation/Index.rst";s:4:"33bd";s:26:"Documentation/Settings.yml";s:4:"0f5e";s:25:"Documentation/Targets.rst";s:4:"cc7b";s:37:"Documentation/Configuration/Index.rst";s:4:"1c8b";s:33:"Documentation/Developer/Index.rst";s:4:"0d6c";s:36:"Documentation/Installation/Index.rst";s:4:"5e16";s:36:"Documentation/Introduction/Index.rst";s:4:"a139";s:42:"Resources/Public/Samples/Configuration.txt";s:4:"8813";s:31:"Tests/Unit/ConnectorCsvTest.php";s:4:"f238";s:34:"Tests/Unit/Fixtures/BlankLines.csv";s:4:"4e25";s:44:"Tests/Unit/Fixtures/CleanDataNoHeaderRow.csv";s:4:"583f";s:46:"Tests/Unit/Fixtures/CleanDataWithHeaderRow.csv";s:4:"e66c";s:35:"sv1/class.tx_svconnectorcsv_sv1.php";s:4:"6490";s:17:"sv1/locallang.xml";s:4:"e842";}',
   'comment' => 'Bug fix: now properly ignores empty lines in CSV files.',
   'user' => 'francois',
 );
