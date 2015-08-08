@@ -61,7 +61,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 			// Implement post-processing hook
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processRaw'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processRaw'] as $className) {
-				$processor = &t3lib_div::getUserObj($className);
+				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$result = $processor->processRaw($result, $this);
 			}
 		}
@@ -79,11 +79,11 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 			// Get the data as an array
 		$result = $this->fetchArray($parameters);
 			// Transform result to XML
-		$xml = t3lib_div::array2xml_cs($result);
+		$xml = \TYPO3\CMS\Core\Utility\GeneralUtility::array2xml_cs($result);
 			// Implement post-processing hook
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processXML'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processXML'] as $className) {
-				$processor = &t3lib_div::getUserObj($className);
+				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$xml = $processor->processXML($xml, $this);
 			}
 		}
@@ -125,13 +125,13 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 			}
 		}
 		if (TYPO3_DLOG || $this->extConf['debug']) {
-			t3lib_div::devLog('Structured data', $this->extKey, -1, $data);
+			\TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Structured data', $this->extKey, -1, $data);
 		}
 
 			// Implement post-processing hook
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processArray'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processArray'] as $className) {
-				$processor = &t3lib_div::getUserObj($className);
+				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$data = $processor->processArray($data, $this);
 			}
 		}
@@ -152,17 +152,17 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 	protected function query($parameters) {
 		$fileData = array();
 		if (TYPO3_DLOG || $this->extConf['debug']) {
-			t3lib_div::devLog('Call parameters', $this->extKey, -1, $parameters);
+			\TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Call parameters', $this->extKey, -1, $parameters);
 		}
 		// Check if the file is defined and exists
 		if (empty($parameters['filename'])) {
 			$message = $this->sL('LLL:EXT:' . $this->extKey . '/sv1/locallang.xml:no_file_defined');
 			if (TYPO3_DLOG || $this->extConf['debug']) {
-				t3lib_div::devLog($message, $this->extKey, 3);
+				\TYPO3\CMS\Core\Utility\GeneralUtility::devLog($message, $this->extKey, 3);
 			}
 			throw new Exception($message, 1299358179);
 		} else {
-			$filename = t3lib_div::getFileAbsFileName($parameters['filename']);
+			$filename = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($parameters['filename']);
 			if (file_exists($filename)) {
 				// Force auto-detection of line endings
 				ini_set('auto_detect_line_endings', TRUE);
@@ -206,7 +206,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 				}
 				fclose($fp);
 				if (TYPO3_DLOG || $this->extConf['debug']) {
-					t3lib_div::devLog('Data from file', $this->extKey, -1, $fileData);
+					\TYPO3\CMS\Core\Utility\GeneralUtility::devLog('Data from file', $this->extKey, -1, $fileData);
 				}
 
 				// Reset locale, if necessary
@@ -221,7 +221,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 					$filename
 				);
 				if (TYPO3_DLOG || $this->extConf['debug']) {
-					t3lib_div::devLog($message, $this->extKey, 3);
+					\TYPO3\CMS\Core\Utility\GeneralUtility::devLog($message, $this->extKey, 3);
 				}
 				throw new Exception($message, 1299358355);
 			}
@@ -229,7 +229,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 		// Process the result if any hook is registered
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processResponse'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processResponse'] as $className) {
-				$processor = &t3lib_div::getUserObj($className);
+				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$fileData = $processor->processResponse($fileData, $this);
 			}
 		}

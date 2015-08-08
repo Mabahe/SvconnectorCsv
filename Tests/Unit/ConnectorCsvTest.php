@@ -104,7 +104,7 @@ class tx_svconnectorcsv_Test extends tx_phpunit_testcase {
 	 */
 	public function readCsvFileIntoArray($parameters, $result) {
 		/** @var Tx_Svconnector_Domain_Repository_ConnectorRepository $connectorRepository */
-		$connectorRepository = t3lib_div::makeInstance('Tx_Svconnector_Domain_Repository_ConnectorRepository');
+		$connectorRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Svconnector_Domain_Repository_ConnectorRepository');
 		try {
 			$serviceObject = $connectorRepository->findServiceByKey('tx_svconnectorcsv_sv1');
 			$data = $serviceObject->fetchArray($parameters);

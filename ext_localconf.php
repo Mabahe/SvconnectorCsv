@@ -3,7 +3,7 @@ if (!defined ('TYPO3_MODE')) {
  	die ('Access denied.');
 }
 
-t3lib_extMgm::addService($_EXTKEY,  'connector' /* sv type */,  'tx_svconnectorcsv_sv1' /* sv key */,
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService($_EXTKEY,  'connector' /* sv type */,  'tx_svconnectorcsv_sv1' /* sv key */,
 		array(
 
 			'title' => 'CSV connector',
@@ -18,7 +18,7 @@ t3lib_extMgm::addService($_EXTKEY,  'connector' /* sv type */,  'tx_svconnectorc
 			'os' => '',
 			'exec' => '',
 
-			'classFile' => t3lib_extMgm::extPath($_EXTKEY).'sv1/class.tx_svconnectorcsv_sv1.php',
+			'classFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'sv1/class.tx_svconnectorcsv_sv1.php',
 			'className' => 'tx_svconnectorcsv_sv1',
 		)
 	);
