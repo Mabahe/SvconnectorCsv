@@ -61,7 +61,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 			// Implement post-processing hook
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processRaw'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processRaw'] as $className) {
-				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
+				$processor = \TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$result = $processor->processRaw($result, $this);
 			}
 		}
@@ -83,7 +83,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 			// Implement post-processing hook
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processXML'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processXML'] as $className) {
-				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
+				$processor = \TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$xml = $processor->processXML($xml, $this);
 			}
 		}
@@ -131,7 +131,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 			// Implement post-processing hook
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processArray'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processArray'] as $className) {
-				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
+				$processor = \TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$data = $processor->processArray($data, $this);
 			}
 		}
@@ -229,7 +229,7 @@ class tx_svconnectorcsv_sv1 extends tx_svconnector_base {
 		// Process the result if any hook is registered
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processResponse'])) {
 			foreach($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][$this->extKey]['processResponse'] as $className) {
-				$processor = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
+				$processor = \TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($className);
 				$fileData = $processor->processResponse($fileData, $this);
 			}
 		}
